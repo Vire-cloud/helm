@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/my-app
-  tag: "1.25.5"
+  tag: "243"
   pullPolicy: IfNotPresent
   
 appName: my-nginx
