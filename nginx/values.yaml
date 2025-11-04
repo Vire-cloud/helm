@@ -1,4 +1,4 @@
-replicaCount: 2
+replicaCount: 1
 
 image:
   repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/nginx-hello-india
