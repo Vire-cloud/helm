@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "nginx.fullname" . }}
+  name: {{ include "my-nginx" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "nginx.name" . }}
+      app: {{ include "my-nginx" . }}
   template:
     metadata:
       labels:
-        app: {{ include "nginx.name" . }}
+        app: {{ include "my-nginx" . }}
     spec:
       containers:
         - name: nginx
