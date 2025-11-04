@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "my-nginx" . }}
+  name: my-nginx
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app: {{ include "my-nginx" . }}
+    app: my-nginx
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
