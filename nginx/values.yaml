@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/my-app
-  tag: "243"
+  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/nginx-hello-india
+  tag: "latest"
   pullPolicy: IfNotPresent
   
 appName: my-nginx
