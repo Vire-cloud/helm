@@ -4,8 +4,10 @@ image:
   repository: nginx
   tag: "1.25.5"
   pullPolicy: IfNotPresent
-
+  
+appName: my-nginx
 service:
+  name: my-nginx
   type: LoadBalancer
   port: 80
 
