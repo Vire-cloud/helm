@@ -2,13 +2,10 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_ID = "s-0-009988"
-        CLUSTER_NAME = "gitlab-gke"
-        CLUSTER_ZONE = "asia-south1-c"
         HELM_RELEASE = "my-nginx"
         CHART_PATH = "nginx"
         IMAGE_NAME = "nginx-test"
-        IMAGE_TAG = "v2"
+        IMAGE_TAG = "v3"
     }
 
     stages {
