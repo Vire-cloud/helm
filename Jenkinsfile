@@ -33,6 +33,7 @@ pipeline {
         stage('build and push') {
             steps {
                 sh '''
+                gcloud auth configure-docker asia-south1-docker.pkg.dev -q
                 docker build -t ${Repository}/$IMAGE_NAME:$IMAGE_TAG .
                 docker push ${Repository}/$IMAGE_NAME:$IMAGE_TAG
                 '''
