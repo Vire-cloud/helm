@@ -5,7 +5,7 @@ pipeline {
         HELM_RELEASE = "my-nginx"
         CHART_PATH = "nginx"
         IMAGE_NAME = "nginx-test"
-        IMAGE_TAG = "v3"
+        IMAGE_TAG = "v${BUILD_NUMBER}"
     }
 
     stages {
