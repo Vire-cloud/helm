@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/nginx-test
-  tag: "v2"
+  tag: "v3"
   pullPolicy: IfNotPresent
   
 appName: my-nginx1
