@@ -7,6 +7,8 @@ pipeline {
         CLUSTER_ZONE = "asia-south1-c"
         HELM_RELEASE = "my-nginx"
         CHART_PATH = "nginx"
+        IMAGE_NAME = "nginx-test"
+        IMAGE_TAG = "v1"
     }
 
     stages {
@@ -25,6 +27,15 @@ pipeline {
                     gcloud container clusters get-credentials $CLUSTER_NAME --zone $CLUSTER_ZONE --project $PROJECT_ID
                     '''
                 }
+            }
+        }
+
+        stage('build and push') {
+            steps {
+                sh '''
+                docker build -t ${Repository}/$IMAGE_NAME:$IMAGE_TAG .
+                docker push ${Repository}/$IMAGE_NAME:$IMAGE_TAG
+                '''
             }
         }
 
