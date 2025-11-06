@@ -1,13 +1,13 @@
 replicaCount: 1
 
 image:
-  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/nginx-hello-india
+  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/nginx-test:v1
   tag: "latest"
   pullPolicy: IfNotPresent
   
-appName: my-nginx
+appName: my-nginx1
 service:
-  name: my-nginx
+  name: my-nginx1
   type: LoadBalancer
   port: 80
 
