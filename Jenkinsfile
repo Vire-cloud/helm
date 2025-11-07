@@ -39,7 +39,7 @@ pipeline {
                 sh '''
                 helm upgrade --install $HELM_RELEASE $CHART_PATH -f $CHART_PATH/values.yaml \
                     --set image.repository=${Repository}/$IMAGE_NAME:$IMAGE_TAG \
-                    --wait --timeout 3m
+                    --wait --timeout 1m
                 '''
             }
         }
