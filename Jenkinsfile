@@ -2,8 +2,6 @@ pipeline {
     agent any
 
     environment {
-        CHART_PATH = "nginx"
-        IMAGE_NAME = "nginx-test"
         IMAGE_TAG = "v${BUILD_NUMBER}"
     }
 
