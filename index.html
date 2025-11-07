@@ -2,30 +2,133 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Deployed by Jenkins</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Advanced Web Page</title>
     <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #0b3d91;
-            color: black;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #007bff;
+            padding: 1rem 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        nav ul li {
+            margin-right: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero section */
+        .hero {
+            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+            height: 400px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            flex-direction: column;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
         }
-        h1 {
-            font-size: 2.5em;
+
+        .hero h1 {
+            font-size: 3rem;
         }
-        p {
-            font-size: 1.2em;
+
+        /* Content section */
+        .content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .content h2 {
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #343a40;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul li {
+                margin-bottom: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>This is deployed by Jenkins 🚀</h1>
-    <p>Using NGINX Docker Image</p>
-    <p>i love devops</p>
-    <p>version 3</p>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Welcome to My Advanced Page</h1>
+    </section>
+
+    <section class="content">
+        <h2>About This Page</h2>
+        <p>This is a more advanced static web page, fully responsive and styled with CSS only. It works perfectly inside a Docker container served by Nginx.</p>
+        <p>You can extend it with more sections, images, or even integrate JavaScript if needed.</p>
+    </section>
+
+    <footer>
+        &copy; 2025 My Advanced Web Page
+    </footer>
+
 </body>
 </html>
