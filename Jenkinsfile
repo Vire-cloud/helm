@@ -33,17 +33,7 @@ pipeline {
                 '''
             }
         }
-        stage('Update values.yaml') {
-            steps {
-                script {
-                    // Update image tag inside values.yaml
-                    sh """
-                    sed -i 's|tag:.*|tag: "${IMAGE_TAG}"|' ${CHART_PATH}/values.yaml
-                    
-                    """
-                }
-            }
-        }
+
         stage('Deploy with Helm') {
             steps {
                 sh '''
