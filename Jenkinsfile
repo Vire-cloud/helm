@@ -38,7 +38,8 @@ pipeline {
             steps {
                 sh '''
                 helm upgrade --install $HELM_RELEASE $CHART_PATH -f $CHART_PATH/values.yaml \
-                    --set image.repository=${Repository}/$IMAGE_NAME:$IMAGE_TAG
+                    --set image.repository=${Repository}/$IMAGE_NAME:$IMAGE_TAG \
+                    --wait --timeout 3m
                 '''
             }
         }
@@ -46,8 +47,6 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 sh '''
-                echo "waiting for pod ready"
-                kubectl rollout status deployment/$HELM_RELEASE --timeout=180s
                 echo "Verifying resources..."
                 kubectl get pods
                 kubectl get svc
