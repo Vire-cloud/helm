@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy with Helm') {
             steps {
                 sh '''
-                helm upgrade --install $HELM_RELEASE $CHART_PATH -f $CHART_PATH/values.yaml
+                helm upgrade --install $HELM_RELEASE $CHART_PATH -f $CHART_PATH/values.yaml \
                     --set image.repository=${Repository}/$IMAGE_NAME:$IMAGE_TAG
                 '''
             }
