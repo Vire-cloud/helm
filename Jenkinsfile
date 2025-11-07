@@ -39,6 +39,7 @@ pipeline {
                     // Update image tag inside values.yaml
                     sh """
                     sed -i 's|tag:.*|tag: "${IMAGE_TAG}"|' ${CHART_PATH}/values.yaml
+                    
                     """
                 }
             }
@@ -47,6 +48,7 @@ pipeline {
             steps {
                 sh '''
                 helm upgrade --install $HELM_RELEASE $CHART_PATH -f $CHART_PATH/values.yaml
+                    --set image.repository=$IMAGE_NAME,image.tag=$IMAGE_TAG
                 
                 '''
             }
