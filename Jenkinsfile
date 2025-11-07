@@ -38,7 +38,7 @@ pipeline {
             steps {
                 sh '''
                 helm upgrade --install $HELM_RELEASE $CHART_PATH -f $CHART_PATH/values.yaml
-                    --set image.repository=${Repository}/$IMAGE_NAME/$IMAGE_TAG:${BUILD_NUMBER}
+                    --set image.repository=${Repository}/$IMAGE_NAME:$IMAGE_TAG
                 '''
             }
         }
