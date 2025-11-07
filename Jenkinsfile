@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        HELM_RELEASE = "my-nginx"
         CHART_PATH = "nginx"
         IMAGE_NAME = "nginx-test"
         IMAGE_TAG = "v${BUILD_NUMBER}"
@@ -40,7 +39,7 @@ pipeline {
         stage('Deploy with Helm') {
             steps {
                 sh '''
-                helm upgrade --install $HELM_RELEASE $CHART_PATH -f $CHART_PATH/values.yaml
+                helm upgrade --install $CHART_PATH -f $CHART_PATH/values.yaml
                 '''
             }
         }
