@@ -46,6 +46,9 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 sh '''
+                echo "waiting for pod ready"
+                kubectl rollout status deployment/$HELM_RELEASE --timeout=180s
+                echo "Verifying resources..."
                 kubectl get pods
                 kubectl get svc
                 '''
