@@ -11,7 +11,7 @@ image:
   tag: "" 
   pullPolicy: IfNotPresent
 
-containerPort: 3000
+containerPort: 80
 resources:
   limits:
     cpu: "500m"
@@ -25,4 +25,4 @@ appName: blue-app
 service:
   name: blue-service
   type: LoadBalancer
-  port: 3000
+  port: 80
