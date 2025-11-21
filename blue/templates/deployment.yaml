@@ -1,23 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "online-shop.fullname" . }}
+  name: {{ .Values.appName }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ include "online-shop.fullname" . }}
+    app: {{ .Values.appName }}
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: {{ include "online-shop.fullname" . }}
+      app: {{ .Values.appName }}
   template:
     metadata:
-      namespace: {{ .Values.namespace }}
       labels:
-        app: {{ include "online-shop.fullname" . }}
+        app: {{ .Values.appName }}
     spec:
       containers:
-        - name: {{ include "online-shop.fullname" . }}
+        - name: {{ .Values.appName }}
           image: "{{ .Values.image.repository }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
