@@ -8,7 +8,7 @@ RUN rm /etc/nginx/conf.d/default.conf || true
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy your custom index.html into the NGINX web root
-COPY index-blue.html /usr/share/nginx/html/index.html
+COPY index.html /usr/share/nginx/html/index.html
 
 # Expose port 80
 EXPOSE 80
