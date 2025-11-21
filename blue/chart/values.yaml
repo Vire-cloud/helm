@@ -9,17 +9,24 @@ image:
   tag: "" 
   pullPolicy: IfNotPresent
 
+appName: blue-deployment
+service:
+  name: blue-deployment
+  type: LoadBalancer
+  port: 80
+
 resources:
   limits:
-    cpu: "500m"
-    memory: "512Mi"
+    cpu: 200m
+    memory: 256Mi
   requests:
-    cpu: "200m"
-    memory: "256Mi"
-    
-appName: blue-app
+    cpu: 100m
+    memory: 128Mi
 
-service:
-  name: blue-service
-  type: LoadBalancer
+livenessProbe:
+  path: /
+  port: 80
+
+readinessProbe:
+  path: /
   port: 80
