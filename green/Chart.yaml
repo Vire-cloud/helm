@@ -1,6 +1,6 @@
 apiVersion: v2
-name: nginx
-description: A simple NGINX deployment on Kubernetes
+name: green-chart
+description: Helm chart for Online Shop Blue-Green Deployment
 type: application
-version: 0.1.0
-appVersion: "1.25.5"
+version: 1.0.0
+appVersion: "1.0.0"
