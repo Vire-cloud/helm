@@ -1,28 +1,27 @@
-replicaCount: 1
+# ENVIRONMENT IDENTIFIER
+env: blue   # change: blue / green
+
+namespace: blue-green-ns
+
+# Deployment settings
+replicas: 3
 
 image:
-  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/nginx-test
-  #tag: "v3"
+  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/blue-deployment
+  #tag: latest
   pullPolicy: IfNotPresent
-  
-appName: my-nginx1
-service:
-  name: my-nginx1
-  type: LoadBalancer
-  port: 80
+
+containerPort: 3000
 
 resources:
   limits:
-    cpu: 200m
-    memory: 256Mi
+    cpu: "500m"
+    memory: "512Mi"
   requests:
-    cpu: 100m
-    memory: 128Mi
+    cpu: "200m"
+    memory: "256Mi"
 
-livenessProbe:
-  path: /
-  port: 80
-
-readinessProbe:
-  path: /
-  port: 80
+service:
+  type: NodePort
+  port: 3000
+  nodePort: 30000
