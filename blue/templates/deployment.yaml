@@ -1,31 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.appName }}
+  name: {{ include "online-shop.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ include "online-shop.fullname" . }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.appName }}
+      app: {{ include "online-shop.fullname" . }}
   template:
     metadata:
+      namespace: {{ .Values.namespace }}
       labels:
-        app: {{ .Values.appName }}
+        app: {{ include "online-shop.fullname" . }}
     spec:
       containers:
-        - name: {{ .Values.appName }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        - name: {{ include "online-shop.fullname" . }}
+          image: "{{ .Values.image.repository }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.service.port }}
-          livenessProbe:
-            httpGet:
-              path: {{ .Values.livenessProbe.path }}
-              port: {{ .Values.livenessProbe.port }}
-          readinessProbe:
-            httpGet:
-              path: {{ .Values.readinessProbe.path }}
-              port: {{ .Values.readinessProbe.port }}
+            - containerPort: {{ .Values.containerPort }}
           resources:
             limits:
               cpu: {{ .Values.resources.limits.cpu }}
@@ -33,4 +29,3 @@ spec:
             requests:
               cpu: {{ .Values.resources.requests.cpu }}
               memory: {{ .Values.resources.requests.memory }}
-
