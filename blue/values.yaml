@@ -8,7 +8,7 @@ replicas: 3
 
 image:
   repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/blue-deployment
-  #tag: latest
+  tag: "" 
   pullPolicy: IfNotPresent
 
 containerPort: 3000
