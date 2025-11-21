@@ -12,7 +12,6 @@ image:
   pullPolicy: IfNotPresent
 
 containerPort: 3000
-
 resources:
   limits:
     cpu: "500m"
@@ -20,8 +19,10 @@ resources:
   requests:
     cpu: "200m"
     memory: "256Mi"
-
+    
+appName: blue-app
 service:
-  type: NodePort
+  name: blue-service
+  type: LoadBalancer
   port: 3000
   nodePort: 30000
