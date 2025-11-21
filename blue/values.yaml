@@ -21,8 +21,8 @@ resources:
     memory: "256Mi"
     
 appName: blue-app
+
 service:
   name: blue-service
   type: LoadBalancer
   port: 3000
-  nodePort: 30000
