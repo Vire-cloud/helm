@@ -49,8 +49,8 @@ pipeline {
             steps {
                 sh '''
                 echo "Verifying resources..."
-                kubectl get pods -n blue-green-ns
-                kubectl get svc -n blue-green-ns
+                kubectl get pods
+                kubectl get svc 
                 '''
             }
         }
