@@ -1,15 +1,14 @@
-# ENVIRONMENT IDENTIFIER
-env: blue   # change: blue / green
+env: blue
 
-# Deployment settings
 replicas: 1
 
 image:
   repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/blue-deployment
-  tag: "" 
+  tag: ""
   pullPolicy: IfNotPresent
 
 appName: blue-deployment
+
 service:
   name: blue-deployment
   type: LoadBalancer
