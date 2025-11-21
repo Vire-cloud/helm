@@ -1,8 +1,6 @@
 # ENVIRONMENT IDENTIFIER
 env: blue   # change: blue / green
 
-namespace: blue-green-ns
-
 # Deployment settings
 replicas: 1
 
@@ -11,7 +9,6 @@ image:
   tag: "" 
   pullPolicy: IfNotPresent
 
-containerPort: 80
 resources:
   limits:
     cpu: "500m"
