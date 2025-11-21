@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Advanced Web Page</title>
+    <title>My Attractive Web Page</title>
     <style>
-        /* Reset some default styles */
         * {
             margin: 0;
             padding: 0;
@@ -13,22 +12,21 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+            background: #eef2f7;
             color: #333;
         }
 
         /* Navbar */
         nav {
-            background-color: #007bff;
+            background: #0d6efd;
             padding: 1rem 2rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
         }
 
         nav ul {
-            list-style: none;
             display: flex;
-            justify-content: flex-start;
+            list-style: none;
         }
 
         nav ul li {
@@ -37,71 +35,95 @@
 
         nav ul li a {
             text-decoration: none;
-            color: black;
-            font-weight: bold;
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: 0.3s;
         }
 
         nav ul li a:hover {
-            text-decoration: underline;
+            color: #ffd700;
         }
 
-        /* Hero section */
+        /* Hero Banner */
         .hero {
-            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-            height: 400px;
+            height: 450px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url("https://via.placeholder.com/1200x450") center/cover no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: black;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            color: #fff;
+            text-align: center;
+            padding: 0 1rem;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
+            animation: fadeIn 2s ease;
         }
 
-        /* Content section */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content */
         .content {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 1rem;
+            max-width: 1000px;
+            margin: 3rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .card {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
         }
 
-        .content h2 {
-            color: #007bff;
-            margin-bottom: 1rem;
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
-        .content p {
+        .card h2 {
             margin-bottom: 1rem;
+            color: #0d6efd;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0d6efd;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            margin-top: 1rem;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #073fa5;
         }
 
         /* Footer */
         footer {
+            background: #0d6efd;
+            color: white;
+            padding: 1.5rem;
             text-align: center;
-            padding: 1rem;
-            background: #343a40;
-            color: black;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav ul li {
-                margin-bottom: 0.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
+        footer span {
+            color: #ffd700;
         }
     </style>
 </head>
@@ -117,17 +139,25 @@
     </nav>
 
     <section class="hero">
-        <h1>Welcome to My Advanced Page</h1>
+        <h1>Welcome to My Beautiful Web Page</h1>
     </section>
 
     <section class="content">
-        <h2>About This Page</h2>
-        <p>This is a more advanced static web page, fully responsive and styled with CSS only. It works perfectly inside a Docker container served by Nginx.</p>
-        <p>You can extend it with more sections, images, or even integrate JavaScript if needed.</p>
+        <div class="card">
+            <h2>About This Page</h2>
+            <p>This modern UI is responsive, smooth, and visually appealing. Perfect for showcasing content inside a Docker container served with Nginx.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+
+        <div class="card">
+            <h2>Extend It Easily</h2>
+            <p>You can add galleries, portfolios, forms, or JavaScript widgets. Everything is modular and scalable.</p>
+            <a href="#" class="btn">Get Started</a>
+        </div>
     </section>
 
     <footer>
-        &copy; 2025 My Advanced Web Page
+        © 2025 <span>My Attractive Web Page</span> — All Rights Reserved
     </footer>
 
 </body>
