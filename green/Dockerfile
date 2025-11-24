@@ -11,7 +11,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html /usr/share/nginx/html/index.html
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 8080
 
 # Run NGINX in foreground (so container stays alive)
 CMD ["nginx", "-g", "daemon off;"]
