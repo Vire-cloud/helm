@@ -1,4 +1,3 @@
-appName: myapp
 
 image:
   repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/blue-deployment
@@ -7,7 +6,8 @@ image:
 
   replicas: 2
 
-  service:
+appName: myapp
+service:
+  name: myapp
   type: LoadBalancer
   port: 80
-
