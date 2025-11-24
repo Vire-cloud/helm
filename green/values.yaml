@@ -5,24 +5,10 @@ image:
   #tag: "v3"
   pullPolicy: IfNotPresent
   
-appName: my-nginx1
+appName: myapp
 service:
-  name: my-nginx1
+  name: green
   type: LoadBalancer
-  port: 80
+  port: 8080
 
-resources:
-  limits:
-    cpu: 200m
-    memory: 256Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
 
-livenessProbe:
-  path: /
-  port: 80
-
-readinessProbe:
-  path: /
-  port: 80
