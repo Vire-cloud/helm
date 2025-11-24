@@ -9,6 +9,6 @@ appName: green
 service:
   name: green
   type: LoadBalancer
-  port: 80
+  port: 8081
 
 
