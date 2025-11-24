@@ -5,8 +5,8 @@ image:
   tag: ""
   pullPolicy: IfNotPresent
 
-appName: myapp
+appName: blue
 service:
-  name: myapp
+  name: blue
   type: LoadBalancer
   port: 80
