@@ -5,7 +5,7 @@ image:
   #tag: "v3"
   pullPolicy: IfNotPresent
   
-appName: myapp
+appName: green
 service:
   name: green
   type: LoadBalancer
