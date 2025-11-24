@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/green
+  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/green-deployment
   #tag: "v3"
   pullPolicy: IfNotPresent
   
