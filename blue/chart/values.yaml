@@ -1,31 +1,15 @@
-env: blue
+appName: myapp
 
-replicas: 1
+activeVersion: blue
 
 image:
   repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/blue-deployment
   tag: ""
   pullPolicy: IfNotPresent
 
-appName: blue-deployment
+  replicas: 2
 
-service:
-  name: blue-deployment
+  service:
   type: LoadBalancer
   port: 80
 
-resources:
-  limits:
-    cpu: 200m
-    memory: 256Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
-
-livenessProbe:
-  path: /
-  port: 80
-
-readinessProbe:
-  path: /
-  port: 80
