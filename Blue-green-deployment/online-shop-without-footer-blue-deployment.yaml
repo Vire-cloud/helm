@@ -34,11 +34,10 @@ metadata:
 spec:
   selector:
     app: online-shop-blue
-  type: NodePort
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 3001
       targetPort: 3000
-      nodePort: 30001
       
       
