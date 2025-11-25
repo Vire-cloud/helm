@@ -2,31 +2,42 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_ID = "my-project"
-        REGION = "asia-south1"
-        REPO = "app-repo"
+        PROJECT_ID = "s-0-009988"
+        #REGION = "asia-south1"
+        REPO = "asia-south1-docker.pkg.dev/s-0-009988/docker-images"
         IMAGE = "myapp"
-        CLUSTER = "my-gke"
-        ZONE = "asia-south1-a"
-        NEW_COLOR = "green"     // Jenkins decides dynamically
+        IMAGE_TAG = "v${BUILD_NUMBER}"
+        CLUSTER_ZONE = "gitlab-gke"
+        ZONE = "asia-south1-c"
+        COLOR = "green"     // Jenkins decides dynamically
     }
 
     stages {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/your/repo.git'
+                git branch: 'main', url: 'https://github.com/Vire-cloud/helm.git'
             }
         }
 
+        stage('Authenticate to GCP') {
+            steps {
+                withCredentials([file(credentialsId: 'service-account', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    sh '''
+                    gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+                    gcloud config set project $PROJECT_ID
+                    gcloud container clusters get-credentials $CLUSTER_NAME --zone $CLUSTER_ZONE --project $PROJECT_ID
+                    '''
+                }
+            }
+        }        
+
         stage('Docker Build & Push') {
             steps {
-                script {
-                    IMAGE_URI = "${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/${IMAGE}:${BUILD_NUMBER}"
-                }
                 sh """
-                  docker build -t $IMAGE_URI .
-                  docker push $IMAGE_URI
+                gcloud auth configure-docker asia-south1-docker.pkg.dev -q
+                docker build -t ${Repository}/$IMAGE_NAME:$IMAGE_TAG .
+                docker push ${Repository}/$IMAGE_NAME:$IMAGE_TAG
                 """
             }
         }
@@ -34,22 +45,24 @@ pipeline {
         stage('Deploy New Color') {
             steps {
                 sh """
-                helm upgrade --install myapp-${NEW_COLOR} ./helm/myapp \
-                  --values helm/myapp/values-${NEW_COLOR}.yaml \
-                  --set image=${IMAGE_URI}
+                helm upgrade --install myapp-${COLOR} ./helm/myapp \
+                  --values helm/myapp/values-${COLOR}.yaml \
+                  --set image.repository=${REPO}/$IMAGE_NAME \
+                  --set image.tag=$IMAGE_TAG \
+                  --wait --timeout 1m
                 """
             }
         }
 
-        stage('Switch Traffic to New Color') {
-            steps {
-                sh """
-                helm upgrade myapp ./helm/myapp \
-                   --set color=${NEW_COLOR}
-                """
-            }
-        }
-    }
+\\        stage('Switch Traffic to New Color') {
+\\            steps {
+\\                sh """
+\\                helm upgrade myapp ./helm/myapp \
+\\                  --set color=${NEW_COLOR}
+\\               """
+\\            }
+\\       }
+\\    }
 
     post {
         failure {
