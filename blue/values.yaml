@@ -1,12 +1,31 @@
-replicas: 2
+replicaCount: 1
 
 image:
-  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/blue-deployment
-  tag: ""
+  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/nginx-test
+  #tag: "v3"
   pullPolicy: IfNotPresent
-
-appName: blue
+  
+appName: my-nginx1
 service:
-  name: blue
+  name: my-nginx1
   type: LoadBalancer
+  port: 8080
+target:
   port: 80
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+livenessProbe:
+  path: /
+  port: 80
+
+readinessProbe:
+  path: /
+  port: 80
+

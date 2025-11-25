@@ -1,6 +1,7 @@
 apiVersion: v2
-name: blue
-description: Blue/Green Deployment Helm Chart
+name: nginx-blue
+description: A simple NGINX deployment on Kubernetes
 type: application
 version: 0.1.0
-appVersion: "1.0"
+appVersion: "1.25.5"
+
