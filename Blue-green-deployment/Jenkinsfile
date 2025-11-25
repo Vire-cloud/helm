@@ -40,7 +40,7 @@ pipeline {
                sh '''
                kubectl create ns -f blue-green-ns.yml
                kubectl apply -f online-shop-without-footer-blue-deployment.yaml
-               kubectl apply -f online-shop-green-deployment.yaml
+               #kubectl apply -f online-shop-green-deployment.yaml
                '''
            }
         }       
