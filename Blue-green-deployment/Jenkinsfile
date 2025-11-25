@@ -37,14 +37,10 @@ pipeline {
         }    
         stage('deploy with kubectl') {
            steps {
-              script {
-                  IMAGE_FULL = "asia-south1-docker.pkg.dev/s-0-009988/docker-images/online_shop:${IMAGE_TAG}"
-              }               
                sh '''
-               sed "s|IMAGE_TAG_PLACEHOLDER|${IMAGE_FULL}|g" Blue-green-deployment/online-shop-without-footer-blue-deployment.yaml \
-               > Blue-green-deployment/tmp-blue.yaml               
                kubectl apply -f Blue-green-deployment/blue-green-ns.yml
                kubectl apply -f Blue-green-deployment/online-shop-without-footer-blue-deployment.yaml
+               kubectl set image deployment/online-shop-blue online-shop-blue=${Repository}/$IMAGE_NAME:$IMAGE_TAG -n blue-green-ns         
                #kubectl apply -f Blue-green-deployment/online-shop-green-deployment.yaml
                kubectl rollout status deployment/online-shop-blue -n blue-green-ns --timeout=1m
                '''
