@@ -1,0 +1,11 @@
+# version to deploy (blue / green)
+color: blue
+
+# docker image
+image: ""
+
+replicaCount: 2
+
+service:
+  type: LoadBalancer
+  port: 80
