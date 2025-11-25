@@ -1,15 +1,15 @@
-replicaCount: 1
+replicaCount: 3
 
 image:
-  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/nginx-test
+  repository: asia-south1-docker.pkg.dev/s-0-009988/docker-images/blue-deployment
   #tag: "v3"
   pullPolicy: IfNotPresent
   
-appName: my-nginx1
+appName: blue
 service:
-  name: my-nginx1
+  name: blue
   type: LoadBalancer
-  port: 8080
+  port: 80
 target:
   port: 80
 
