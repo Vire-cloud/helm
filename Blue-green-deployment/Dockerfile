@@ -1,11 +1,17 @@
-FROM node:18
+# Use official NGINX image as the base
+FROM nginx:latest
 
-WORKDIR /app
+# Remove default nginx.conf (optional but safer)
+RUN rm /etc/nginx/conf.d/default.conf || true
 
-COPY package*.json ./
-RUN npm install
+# Copy your custom nginx.conf into the container
+COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY . .
+# Copy your custom index.html into the NGINX web root
+COPY index.html /usr/share/nginx/html/index.html
 
-EXPOSE 3000
-CMD ["npm", "start"]
+# Expose port 80
+EXPOSE 80
+
+# Run NGINX in foreground (so container stays alive)
+CMD ["nginx", "-g", "daemon off;"]
