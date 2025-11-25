@@ -2,11 +2,10 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_ID = "YOUR_GCP_PROJECT_ID"
+        PROJECT_ID = "s-0-009988"
         IMAGE_NAME = "online_shop"
-        GCR_IMAGE = "gcr.io/${PROJECT_ID}/${IMAGE_NAME}"
-        KUBE_CONFIG = credentials('K8S_CONFIG')
-        GOOGLE_CREDENTIALS = credentials('GCR_JSON')
+        CLUSTER_NAME= "gitlab-gke"
+        CLUSTER_ZONE= "asia-south1-c"
     }
     stages {
         stage('Checkout') {
