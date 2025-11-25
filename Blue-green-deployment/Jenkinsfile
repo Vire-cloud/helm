@@ -34,7 +34,12 @@ pipeline {
                 docker push ${Repository}/$IMAGE_NAME:$IMAGE_TAG
                 '''
             }
-        }        
+        }    
+        stage('deploy with kubectl') {
+           step {
+               sh '''
+               kubectl create ns -f blue-green-ns.yml
+               
     }
 }    
 
