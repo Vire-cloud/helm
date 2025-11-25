@@ -9,7 +9,7 @@ pipeline {
         IMAGE_TAG = "v${BUILD_NUMBER}"
         CLUSTER_ZONE = "gitlab-gke"
         ZONE = "asia-south1-c"
-        COLOR = "green"     // Jenkins decides dynamically
+        COLOR = "blue"     // Jenkins decides dynamically
     }
 
     stages {
