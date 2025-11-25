@@ -16,7 +16,7 @@ spec:
         app: online-shop-blue
     spec:
       containers:
-      - image: amitabhdevops/online_shop_without_footer
+      - image: asia-south1-docker.pkg.dev/s-0-009988/docker-images/online_shop
         name: online-shop-blue
         resources:
           limits:
