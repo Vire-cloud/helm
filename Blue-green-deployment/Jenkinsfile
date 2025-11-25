@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                 gcloud auth configure-docker asia-south1-docker.pkg.dev -q
-                docker build -t ${Repository}/$IMAGE_NAME:$IMAGE_TAG -f Blue-green-deployment/Dockerfile .
+                docker build -t ${Repository}/$IMAGE_NAME:$IMAGE_TAG -f Blue-green-deployment/Dockerfile
                 docker push ${Repository}/$IMAGE_NAME:$IMAGE_TAG
                 '''
             }
