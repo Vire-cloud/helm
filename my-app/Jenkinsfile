@@ -1,1 +1,60 @@
+pipeline {
+    agent any
+
+    environment {
+        PROJECT_ID = "my-project"
+        REGION = "asia-south1"
+        REPO = "app-repo"
+        IMAGE = "myapp"
+        CLUSTER = "my-gke"
+        ZONE = "asia-south1-a"
+        NEW_COLOR = "green"     // Jenkins decides dynamically
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/your/repo.git'
+            }
+        }
+
+        stage('Docker Build & Push') {
+            steps {
+                script {
+                    IMAGE_URI = "${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/${IMAGE}:${BUILD_NUMBER}"
+                }
+                sh """
+                  docker build -t $IMAGE_URI .
+                  docker push $IMAGE_URI
+                """
+            }
+        }
+
+        stage('Deploy New Color') {
+            steps {
+                sh """
+                helm upgrade --install myapp-${NEW_COLOR} ./helm/myapp \
+                  --values helm/myapp/values-${NEW_COLOR}.yaml \
+                  --set image=${IMAGE_URI}
+                """
+            }
+        }
+
+        stage('Switch Traffic to New Color') {
+            steps {
+                sh """
+                helm upgrade myapp ./helm/myapp \
+                   --set color=${NEW_COLOR}
+                """
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo "Deployment failed — Traffic NOT switched."
+        }
+    }
+}
 
