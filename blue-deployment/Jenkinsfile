@@ -14,18 +14,15 @@ pipeline {
 
         stage('Authenticate to GCP') {
             steps {
-                withCredentials([file(credentialsId: 'service-account', variable: 'SA_FILE')]) {
+                withCredentials([file(credentialsId: 'service-account', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
                     sh '''
-                    echo "Authenticating to GCP..."
-                    #gcloud auth activate-service-account --key-file=/tmp/sa.json
-                    gcloud auth activate-service-account --key-file=$SA_FILE
+                    gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
                     gcloud config set project $PROJECT_ID
                     gcloud container clusters get-credentials $CLUSTER_NAME --zone $CLUSTER_ZONE --project $PROJECT_ID
                     '''
                 }
             }
         }
-
         stage('build and push') {
             steps {
                 sh '''
