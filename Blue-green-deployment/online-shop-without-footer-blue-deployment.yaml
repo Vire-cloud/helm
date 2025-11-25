@@ -16,7 +16,7 @@ spec:
         app: online-shop-blue
     spec:
       containers:
-      - image: asia-south1-docker.pkg.dev/s-0-009988/docker-images/online_shop:${IMAGE_TAG}
+      - image: asia-south1-docker.pkg.dev/s-0-009988/docker-images/online_shop:IMAGE_TAG_PLACEHOLDER
         name: online-shop-blue
         resources:
           limits:
