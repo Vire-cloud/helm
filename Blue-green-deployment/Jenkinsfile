@@ -38,12 +38,22 @@ pipeline {
         stage('deploy with kubectl') {
            steps {
                sh '''
-               kubectl create ns -f blue-green-ns.yml
+               kubectl apply -f blue-green-ns.yml
                kubectl apply -f online-shop-without-footer-blue-deployment.yaml
                #kubectl apply -f online-shop-green-deployment.yaml
+               --wait --timeout 1m
                '''
            }
-        }       
+        } 
+        stage('Verify Deployment') {
+            steps {
+                sh '''
+                echo "Verifying resources..."
+                kubectl get pods -n blue-green-ns
+                kubectl get svc -n blue-green-ns
+                '''
+            }
+        }        
     }
 }    
 
