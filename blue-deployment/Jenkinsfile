@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_TAG = "v${BUILD_NUMBER}"
-    }
+      }
 
     stages {
         stage('Checkout') {
@@ -16,6 +16,7 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'service-account', variable: 'SA_FILE')]) {
                     sh '''
+                    echo "Authenticating to GCP..."
                     gcloud auth activate-service-account --key-file=$SA_FILE
                     gcloud config set project $PROJECT_ID
                     gcloud container clusters get-credentials $CLUSTER_NAME --zone $CLUSTER_ZONE --project $PROJECT_ID
