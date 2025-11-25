@@ -38,9 +38,9 @@ pipeline {
         stage('deploy with kubectl') {
            steps {
                sh '''
-               kubectl apply -f blue-green-ns.yml
-               kubectl apply -f online-shop-without-footer-blue-deployment.yaml
-               #kubectl apply -f online-shop-green-deployment.yaml
+               kubectl apply -f Blue-green-deployment/blue-green-ns.yml
+               kubectl apply -f Blue-green-deployment/online-shop-without-footer-blue-deployment.yaml
+               #kubectl apply -f Blue-green-deployment/online-shop-green-deployment.yaml
                --wait --timeout 1m
                '''
            }
