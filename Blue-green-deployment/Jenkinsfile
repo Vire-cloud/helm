@@ -6,6 +6,7 @@ pipeline {
         IMAGE_NAME = "online_shop"
         CLUSTER_NAME= "gitlab-gke"
         CLUSTER_ZONE= "asia-south1-c"
+        IMAGE_TAG = "v${BUILD_NUMBER}"
     }
     stages {
         stage('Checkout') {
@@ -25,6 +26,15 @@ pipeline {
                 }
             }
         }
+        stage('build and push') {
+            steps {
+                sh '''
+                gcloud auth configure-docker asia-south1-docker.pkg.dev -q
+                docker build -t ${Repository}/$IMAGE_NAME:$IMAGE_TAG .
+                docker push ${Repository}/$IMAGE_NAME:$IMAGE_TAG
+                '''
+            }
+        }        
     }
 }    
 
