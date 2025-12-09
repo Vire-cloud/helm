@@ -4,8 +4,7 @@ metadata:
   name: app-ingress-stable
   annotations:
     #nginx.ingress.kubernetes.io/canary: "false"
-    kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingressClassName: nginx
 spec:
   rules:
   - host: my-app.com
