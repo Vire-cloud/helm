@@ -42,7 +42,7 @@ pipeline {
                 grep image Canary-deployment/app-stable.yaml
                 kubectl apply -f Canary-deployment/app-stable.yaml
                 kubectl apply -f Canary-deployment/app-service-stable.yaml
-                kubectl apply -f Canary-deployment/app-ingress-stable.yaml
+                #kubectl apply -f Canary-deployment/app-ingress-stable.yaml
 
                 '''
             }
