@@ -9,4 +9,4 @@ spec:
     version: stable
   ports:
   - port: 80
-    targetPort: 443
+    targetPort: 80
