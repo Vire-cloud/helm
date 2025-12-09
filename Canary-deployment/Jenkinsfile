@@ -37,6 +37,7 @@ pipeline {
         stage('Deploy with Helm') {
             steps {
                 sh '''
+                sed -i 's|\\${IMAGE_TAG}|${IMAGE_TAG}|g' Canary-deployment/app-stable.yaml
                 kubectl apply -f Canary-deployment/app-stable.yaml
                 kubectl apply -f Canary-deployment/app-service-stable.yaml
                 kubectl apply -f Canary-deployment/app-ingress-stable.yaml
