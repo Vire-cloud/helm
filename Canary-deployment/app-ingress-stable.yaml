@@ -2,10 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-ingress-stable
-  annotations:
+  #annotations:
     #nginx.ingress.kubernetes.io/canary: "false"
-    kubernetes.io/ingressClassName: nginx
+    #kubernetes.io/ingressClassName: nginx
 spec:
+  ingressClassName: nginx 
   rules:
   - host: my-app.com
     http:
