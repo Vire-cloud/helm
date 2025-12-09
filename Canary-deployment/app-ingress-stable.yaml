@@ -3,11 +3,11 @@ kind: Ingress
 metadata:
   name: app-ingress-stable
   annotations:
-    nginx.ingress.kubernetes.io/canary: "false"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    #nginx.ingress.kubernetes.io/canary: "false"
+    kubernetes.io/ingress.class: "gce"
 spec:
   rules:
-  - host: */*
+  - host: my-app.com
     http:
       paths:
       - path: /
