@@ -4,6 +4,7 @@ metadata:
   name: app-ingress-stable
   annotations:
     nginx.ingress.kubernetes.io/canary: "false"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   rules:
   - host: your-app.com
