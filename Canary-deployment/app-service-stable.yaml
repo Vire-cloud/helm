@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: app-service-stable
 spec:
-  type: ClusterIP 
+  type: LoadBalancer
   selector:
     app: app
     version: stable
