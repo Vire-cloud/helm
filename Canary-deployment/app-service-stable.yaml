@@ -7,5 +7,5 @@ spec:
     app: app
     version: stable
   ports:
-  - port: 8080
+  - port: 80
     targetPort: 80
