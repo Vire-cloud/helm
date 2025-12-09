@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress-stable
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "false"
+spec:
+  rules:
+  - host: your-app.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-service-stable
+            port:
+              number: 80
