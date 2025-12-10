@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_TAG = "canary"
+        IMAGE_TAG = "stable"
         PROJECT_ID = "s-0-009988"
         CLUSTER_NAME = "gitlab-gke"
         CLUSTER_ZONE = "asia-south1-c"
-        IMAGE_NAME = "canary"
+        IMAGE_NAME = "stable"
     }
 
     stages {
