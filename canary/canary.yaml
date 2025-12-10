@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: lgwm-image
-        image: asia-south1-docker.pkg.dev/s-0-009988/docker-images/stable:stable
+        image: asia-south1-docker.pkg.dev/s-0-009988/docker-images/canary:v1
         ports:
         - containerPort: 80
 
@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
       - name: lgwm-image
-        image: asia-south1-docker.pkg.dev/s-0-009988/docker-images/canary:canary
+        image: asia-south1-docker.pkg.dev/s-0-009988/docker-images/canary:v2
         ports:
         - containerPort: 80
 
