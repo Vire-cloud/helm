@@ -43,6 +43,8 @@ pipeline {
                 kubectl apply -f Canary-deployment/app-canary.yaml
                 kubectl apply -f Canary-deployment/app-service-stable.yaml
                 kubectl apply -f Canary-deployment/app-ingress-canary.yaml
+                kubectl apply -f Canary-deployment/DestinationRule.yaml
+                kubectl apply -f Canary-deployment/VirtualService.yaml
 
                 '''
             }
