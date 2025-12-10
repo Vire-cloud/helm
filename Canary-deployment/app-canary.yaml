@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app-container
-        image: your-image:canary
+        image: asia-south1-docker.pkg.dev/s-0-009988/docker-images/stable:${IMAGE_TAG}
         ports:
-        - containerPort: 8080
+        - containerPort: 80
