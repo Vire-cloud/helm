@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+
+    environment {
+        PROJECT_ID = "s-0-009988"
+        CLUSTER_NAME = "gitlab-gke"
+        CLUSTER_ZONE = "asia-south1-c"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Vire-cloud/helm.git'
+            }
+        }
+
+        stage('Authenticate to GCP') {
+            steps {
+                withCredentials([file(credentialsId: 'service-account', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    sh '''
+                    gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+                    gcloud config set project $PROJECT_ID
+                    gcloud container clusters get-credentials $CLUSTER_NAME --zone $CLUSTER_ZONE --project $PROJECT_ID
+                    '''
+                }
+            }
+        }
+
+        stage('Deploy with Helm') {
+            steps {
+                sh '''
+                kubectl apply -f canary/canary.yaml
+
+                '''
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                sh '''
+                echo "Verifying resources..."
+                kubectl get pods
+                kubectl get svc
+                '''
+            }
+        }
+    }
+}
