@@ -3,10 +3,9 @@ kind: Ingress
 metadata:
   name: app-ingress-stable
   annotations:
-    nginx.ingress.kubernetes.io/canary: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/canary: "false"
+    kubernetes.io/ingress.class: gce
 spec:
-  ingressClassName: nginx
   rules:
   - host: my-app.com
     http:
@@ -18,3 +17,6 @@ spec:
             name: app-service-stable
             port:
               number: 80
+
+
+              nginx.ingress.kubernetes.io/canary: "false"
