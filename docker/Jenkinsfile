@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        \\ "v${BUILD_NUMBER}"
         IMAGE_TAG = "stable"
         PROJECT_ID = "s-0-009988"
         CLUSTER_NAME = "gitlab-gke"
