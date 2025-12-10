@@ -39,10 +39,10 @@ pipeline {
                 sh '''
                 sed -i "s|image:.*|image: ${Repository}/${IMAGE_NAME}:${IMAGE_TAG}|g" Canary-deployment/app-stable.yaml
                 echo '------ Resulting YAML ------'
-                grep image Canary-deployment/app-stable.yaml
-                kubectl apply -f Canary-deployment/app-stable.yaml
-                kubectl apply -f Canary-deployment/app-service-stable.yaml
-                #kubectl apply -f Canary-deployment/app-ingress-stable.yaml
+                grep image Canary-deployment/app-canary.yaml
+                kubectl apply -f Canary-deployment/app-canary.yaml
+                kubectl apply -f Canary-deployment/app-service-canary.yaml
+                #kubectl apply -f Canary-deployment/app-ingress-canary.yaml
 
                 '''
             }
