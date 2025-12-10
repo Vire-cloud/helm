@@ -3,8 +3,9 @@ kind: Ingress
 metadata:
   name: app-ingress-canary
   annotations:
-    nginx.ingress.kubernetes.io/canary: "true"
-    nginx.ingress.kubernetes.io/canary-weight: "20"
+    kubernetes.io/canary: "true"
+    kubernetes.io/canary-weight: "20"
+    kubernetes.io/ingress.class: gce
 spec:
   rules:
   - host: my-app.com
