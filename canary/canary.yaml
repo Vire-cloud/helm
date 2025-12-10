@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: lgwm-image
-        image: gcr.io/google-samples/hello-app:1.0
+        image: asia-south1-docker.pkg.dev/s-0-009988/docker-images/stable:stable
         ports:
         - containerPort: 8080
 
@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
       - name: lgwm-image
-        image: gcr.io/google-samples/hello-app:2.0
+        image: asia-south1-docker.pkg.dev/s-0-009988/docker-images/canary:canary
         ports:
         - containerPort: 8080
 
