@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: app-ingress-stable
   annotations:
-    kubernetes.io/canary: "false"
+    cloud.google.com/neg: '{"ingress": false}'
     kubernetes.io/ingress.class: gce
 spec:
   rules:
