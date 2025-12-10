@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy with Helm') {
             steps {
                 sh '''
-                sed -i "s|image:.*|image: ${Repository}/${IMAGE_NAME}:${IMAGE_TAG}|g" Canary-deployment/app-stable.yaml
+                sed -i "s|image:.*|image: ${Repository}/${IMAGE_NAME}:${IMAGE_TAG}|g" Canary-deployment/app-canary.yaml
                 echo '------ Resulting YAML ------'
                 grep image Canary-deployment/app-canary.yaml
                 kubectl apply -f Canary-deployment/app-canary.yaml
