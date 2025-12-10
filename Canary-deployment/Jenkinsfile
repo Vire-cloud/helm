@@ -41,7 +41,7 @@ pipeline {
                 echo '------ Resulting YAML ------'
                 grep image Canary-deployment/app-canary.yaml
                 kubectl apply -f Canary-deployment/app-canary.yaml
-                kubectl apply -f Canary-deployment/app-service-canary.yaml
+                kubectl apply -f Canary-deployment/app-service-stable.yaml
                 kubectl apply -f Canary-deployment/app-ingress-canary.yaml
 
                 '''
