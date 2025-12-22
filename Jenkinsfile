@@ -7,7 +7,7 @@ pipeline {
         CLUSTER_ZONE = "asia-south1-c"
         IMAGE_NAME = "nginx-deployment"
         HELM_RELEASE = "nginx"
-        CHART_PATH = "nginx/Chart.yaml"
+        CHART_PATH = "nginx"
         IMAGE_TAG = "v${BUILD_NUMBER}"
     }
 
