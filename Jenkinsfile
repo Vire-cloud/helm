@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     environment {
+        PROJECT_ID = "s-0-009988"
+        CLUSTER_NAME = "gitlab-gke"
+        CLUSTER_ZONE = "asia-south1-c"
+        IMAGE_NAME = "nginx-deployment"
+        HELM_RELEASE = "nginx"
+        CHART_PATH = "nginx/Chart.yaml"
         IMAGE_TAG = "v${BUILD_NUMBER}"
     }
 
