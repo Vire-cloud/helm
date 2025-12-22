@@ -5,9 +5,9 @@ image:
   #tag: "v3"
   pullPolicy: IfNotPresent
   
-appName: my-nginx1
+appName: my-nginx
 service:
-  name: my-nginx1
+  name: my-nginx
   type: LoadBalancer
   port: 80
 target:
