@@ -9,9 +9,9 @@ appName: my-nginx1
 service:
   name: my-nginx1
   type: LoadBalancer
-  port: 8080
+  port: 80
 target:
-  port: 443
+  port: 80
 
 resources:
   limits:
